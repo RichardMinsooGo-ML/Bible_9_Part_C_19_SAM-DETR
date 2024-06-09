@@ -1,8 +1,10 @@
 # ------------------------------------------------------------------------
-# Modified from DETR (https://github.com/facebookresearch/detr)
-# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
+# UP-DETR
+# Copyright (c) Tencent, Inc. and its affiliates. All Rights Reserved.
 # ------------------------------------------------------------------------
-
+# Modified from DETR (https://github.com/facebookresearch/detr)
+# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+# ------------------------------------------------------------------------
 """
 Misc functions, including distributed helpers.
 
@@ -19,10 +21,11 @@ from typing import Optional, List
 import torch
 import torch.distributed as dist
 from torch import Tensor
+from packaging.version import Version
 
 # needed due to empty tensor bug in pytorch and torchvision 0.5
 import torchvision
-if float(torchvision.__version__.split(".")[1]) < 7.0:
+if Version(torchvision.__version__) < Version('0.7.0'):
     from torchvision.ops import _new_empty_tensor
     from torchvision.ops.misc import _output_size
 
