@@ -26,11 +26,7 @@ from torch.nn.functional import linear, pad, softmax, dropout
 from torch._jit_internal import Optional, Tuple
 
 
-assert float(torch.__version__.split('.')[0]) >= 1, "PyTorch version should be >= 1.5.1"
-if float(torch.__version__.split('.')[1]) < 7:
-    from torch._overrides import has_torch_function, handle_torch_function
-else:
-    from torch.overrides import has_torch_function, handle_torch_function
+from torch.overrides import has_torch_function, handle_torch_function
 
 
 # This class exists solely for Transformer; it has an annotation stating
